@@ -121,7 +121,15 @@ source /opt/ros/melodic/setup.bash
 # Needed to forward GUI windows to vcxsrv
 export DISPLAY=:0
 export LIBGL_ALWAYS_INDIRECT=
-# env
+
+# git aliases
+alias gcm="git commit -m"
+alias gb="git branch"
+alias ga="git add"
+alias gs="git status"
+alias gco="git checkout"
+
+# Customize bash env
 export TERM='xterm-256color'
 export EDITOR='vim'
 export VISUAL='vim'
