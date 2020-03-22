@@ -132,6 +132,22 @@ BLUE='\[\e[48;5;25m\]'
 GRAY='\[\e[48;5;239m\]'
 ORANGE='\[\e[48;5;202m\]'
 RESET='\[\e[0m\]'
-PS1="\t ${BLUE} \u ${RESET}${GRAY} \h ${RESET}${ORANGE} \W ${RESET} $ "
+
+
+parse_git_branch() {
+	RESET='\e[0m'
+	if [[ -d .git ]]; then
+  		BRANCH_NAME="$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')"
+  		GIT_COLOUR='\e[48;5;12m'
+  		if [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]]; then
+  		      	GIT_COLOUR='\e[48;5;124m'
+  		fi
+  		echo -e "${GIT_COLOUR} ${BRANCH_NAME} ${RESET}"
+	else
+		echo ""
+	fi
+}
+
+export PS1="\t ${BLUE} \u ${RESET}${GRAY} \h ${RESET}${ORANGE} \W ${RESET}\$(parse_git_branch) $ "
 unset BLUE GRAY ORANGE RESET
 
