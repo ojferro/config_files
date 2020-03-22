@@ -130,8 +130,8 @@ export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
 BLUE='\[\e[48;5;25m\]'
 GRAY='\[\e[48;5;239m\]'
-PINK='\[\e[48;5;202m\]'
+ORANGE='\[\e[48;5;202m\]'
 RESET='\[\e[0m\]'
-PS1="\t ${BLUE} \u ${RESET}${GRAY} \h ${RESET}${PINK} \W ${RESET} $ "
-unset BLUE GRAY PINK RESET
+PS1="\t ${BLUE} \u ${RESET}${GRAY} \h ${RESET}${ORANGE} \W ${RESET} $ "
+unset BLUE GRAY ORANGE RESET
 
