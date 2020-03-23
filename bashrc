@@ -116,7 +116,7 @@ alias gohome="cd ~/robotics_ws"
 alias _build="cd ~/robotics_ws && catkin_make && source devel/setup.bash"
 alias src="source ~/.bashrc"
 # Source ros environment variables
-source /opt/ros/melodic/setup.bash
+# source /opt/ros/melodic/setup.bash
 
 # Needed to forward GUI windows to vcxsrv
 export DISPLAY=:0
@@ -144,7 +144,7 @@ RESET='\[\e[0m\]'
 
 parse_git_branch() {
 	RESET='\e[0m'
-	if [[ -d .git ]]; then
+	if [[ $(git rev-parse --is-inside-work-tree 2>/dev/null) ]]; then
   		BRANCH_NAME="$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')"
   		GIT_COLOUR='\e[48;5;12m'
   		if [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]]; then
