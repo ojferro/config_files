@@ -128,6 +128,7 @@ alias gb="git branch"
 alias ga="git add"
 alias gs="git status"
 alias gco="git checkout"
+alias gd="git diff"
 
 # Customize bash env
 export TERM='xterm-256color'
