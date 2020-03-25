@@ -157,6 +157,6 @@ parse_git_branch() {
 	fi
 }
 
-export PS1="\t ${BLUE} \u ${RESET}${GRAY} \h ${RESET}${ORANGE} \W ${RESET}\$(parse_git_branch) $ "
+export PS1="\t ${BLUE} \u ${RESET}${GRAY} \h ${RESET}${ORANGE} \w ${RESET}\$(parse_git_branch) $ "
 unset BLUE GRAY ORANGE RESET
 
