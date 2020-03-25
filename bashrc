@@ -116,7 +116,7 @@ alias gohome="cd ~/robotics_ws"
 alias _build="cd ~/robotics_ws && catkin_make && source devel/setup.bash"
 alias src="source ~/.bashrc"
 # Source ros environment variables
-# source /opt/ros/melodic/setup.bash
+source /opt/ros/melodic/setup.bash
 
 # Needed to forward GUI windows to vcxsrv
 export DISPLAY=:0
@@ -124,11 +124,11 @@ export LIBGL_ALWAYS_INDIRECT=
 
 # git aliases
 alias gcm="git commit -m"
+alias gd="git diff"
 alias gb="git branch"
 alias ga="git add"
 alias gs="git status"
 alias gco="git checkout"
-alias gd="git diff"
 
 # Customize bash env
 export TERM='xterm-256color'
@@ -139,17 +139,17 @@ export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
 BLUE='\[\e[48;5;25m\]'
 GRAY='\[\e[48;5;239m\]'
-ORANGE='\[\e[48;5;202m\]'
+ORANGE='\[\e[48;5;166m\]'
 RESET='\[\e[0m\]'
 
 
 parse_git_branch() {
 	RESET='\e[0m'
-	if [[ $(git rev-parse --is-inside-work-tree 2>/dev/null) ]]; then
+	if [[ -d .git ]]; then
   		BRANCH_NAME="$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')"
-  		GIT_COLOUR='\e[48;5;12m'
+  		GIT_COLOUR='\e[48;5;32m'
   		if [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]]; then
-  		      	GIT_COLOUR='\e[48;5;124m'
+  		      	GIT_COLOUR='\e[48;5;172m'
   		fi
   		echo -e "${GIT_COLOUR} ${BRANCH_NAME} ${RESET}"
 	else
@@ -157,6 +157,6 @@ parse_git_branch() {
 	fi
 }
 
-export PS1="\t ${BLUE} \u ${RESET}${GRAY} \h ${RESET}${ORANGE} \w ${RESET}\$(parse_git_branch) $ "
+export PS1="\t ${BLUE} \u ${RESET}${GRAY} \h ${RESET}${ORANGE} \W ${RESET}\$(parse_git_branch) $ "
 unset BLUE GRAY ORANGE RESET
 
