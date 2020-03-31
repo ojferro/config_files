@@ -157,6 +157,13 @@ parse_git_branch() {
 	fi
 }
 
-export PS1="\t ${BLUE} \u ${RESET}${GRAY} \h ${RESET}${ORANGE} \w ${RESET}\$(parse_git_branch) $ "
+lambda="λ"
+zeta="ζ"
+sigma="Σ"
+phi="φ"
+delta="∆"
+surf_integral="∮"
+integral="∫"
+export PS1="\t ${BLUE} \u ${RESET}${GRAY} \h ${RESET}${ORANGE} \w ${RESET}\$(parse_git_branch) ${lambda} "
 unset BLUE GRAY ORANGE RESET
 
