@@ -129,6 +129,11 @@ alias gb="git branch"
 alias ga="git add"
 alias gs="git status"
 alias gco="git checkout"
+alias gl="git log"
+
+alias chrome="/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe" 
+alias code="/mnt/c/Users/t-oferro/AppData/Local/Programs/Microsoft\ VS\ Code/Code.exe"
+alias pydrake=" source /home/t-oferro/tmp/drake-venv/bin/activate && cd ~/drake && export PYTHONPATH=/opt/drake/lib/python3.6/site-packages:/opt/underactuated:${PYTHONPATH}"
 
 # Customize bash env
 export TERM='xterm-256color'
@@ -142,21 +147,6 @@ GRAY='\[\e[48;5;239m\]'
 ORANGE='\[\e[48;5;166m\]'
 RESET='\[\e[0m\]'
 
-
-parse_git_branch() {
-	RESET='\e[0m'
-	if [[ -d .git ]]; then
-  		BRANCH_NAME="$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')"
-  		GIT_COLOUR='\e[48;5;32m'
-  		if [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]]; then
-  		      	GIT_COLOUR='\e[48;5;172m'
-  		fi
-  		echo -e "${GIT_COLOUR} ${BRANCH_NAME} ${RESET}"
-	else
-		echo ""
-	fi
-}
-
 lambda="λ"
 zeta="ζ"
 sigma="Σ"
@@ -164,6 +154,23 @@ phi="φ"
 delta="∆"
 surf_integral="∮"
 integral="∫"
+git_symbol=""
+segment_separator=""
+
+parse_git_branch() {
+	RESET='\x1\e[0m\x2'
+	if [[ -d .git ]]; then
+  		BRANCH_NAME="$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')"
+  		GIT_COLOUR='\x1\e[48;5;32m\x2'
+  		if [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]]; then
+  		      	GIT_COLOUR='\x1\e[48;5;172m\x2'
+  		fi
+  		echo -e "${GIT_COLOUR} ${git_symbol}${BRANCH_NAME} ${RESET}"
+	else
+		echo ""
+	fi
+}
+
 export PS1="\t ${BLUE} \u ${RESET}${GRAY} \h ${RESET}${ORANGE} \w ${RESET}\$(parse_git_branch) ${lambda} "
 unset BLUE GRAY ORANGE RESET
 
