@@ -46,9 +46,9 @@ alias src="source ~/.bashrc"
 
 # Must pass in name of venv the only positional arg
 activate_venv(){
-	source /home/t-oferro/tmp/$1/bin/activate
+	source /home/$USER/tmp/$1/bin/activate
 }
-alias ls_venv="ls /home/t-oferro/tmp/"
+alias ls_venv="ls /home/$USER/tmp/"
 
 
 # git aliases
