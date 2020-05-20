@@ -44,6 +44,13 @@ alias gohome="cd ~/robotics_ws && source devel/setup.bash"
 alias _build="cd ~/robotics_ws && catkin build && source devel/setup.bash"
 alias src="source ~/.bashrc"
 
+# Must pass in name of venv the only positional arg
+activate_venv(){
+	source /home/t-oferro/tmp/$1/bin/activate
+}
+alias ls_venv="ls /home/t-oferro/tmp/"
+
+
 # git aliases
 alias gcm="git commit -m"
 alias gd="git diff"
