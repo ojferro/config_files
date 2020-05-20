@@ -40,8 +40,8 @@ source /opt/ros/melodic/setup.bash
 export DISPLAY=:0
 export LIBGL_ALWAYS_INDIRECT=
 
-alias gohome="cd ~/robotics_ws"
-alias _build="cd ~/robotics_ws && catkin_make && source devel/setup.bash"
+alias gohome="cd ~/robotics_ws && source devel/setup.bash"
+alias _build="cd ~/robotics_ws && catkin build && source devel/setup.bash"
 alias src="source ~/.bashrc"
 
 # git aliases
