@@ -34,7 +34,13 @@ fi
 
 
 # Source ros environment variables
-source /opt/ros/melodic/setup.bash
+ubuntu_version=$(lsb_release -r)
+ubuntu_version=$(cut -f2 <<< "$ubuntu_version")
+if [ "$ubuntu_version" = "20.04" -a -d "/opt/ros/noetic/" ]; then
+	source /opt/ros/noetic/setup.bash
+elif  [ "$ubuntu_version" = "18.04" -a -d "/opt/ros/melodic/" ]; then
+	source /opt/ros/melodic/setup.bash
+fi
 
 # Needed to forward GUI windows to vcxsrv
 export DISPLAY=:0
